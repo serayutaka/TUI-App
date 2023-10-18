@@ -1,4 +1,6 @@
 use std::{error::Error, io};
+use std::io::Write;
+use std::fs::File;
 
 use crossterm::{
     event::{self, DisableMouseCapture,Event, KeyCode, KeyEventKind},
@@ -12,6 +14,8 @@ use tokio::time::sleep as delay_for;
 use std::time::Duration;
 
 use isahc::{http::StatusCode, HttpClient};
+
+use project_tui::send_email;
 
 pub enum InputMode {
     Normal,
@@ -321,7 +325,11 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<(
     loop {
         terminal.draw(|f| ui(f, &mut app))?;
 
-        if app.ending == true { return Ok(()) }
+        if app.ending == true { 
+            make_env(app.name, app.email);
+            let _ = send_email();
+            return Ok(()) 
+        }
 
         if let Event::Key(key) = event::read()? {
             match app.input_mode {
@@ -779,4 +787,17 @@ fn is_internet_connected() -> bool {
     };
 
     response.status() == StatusCode::OK || response.status().is_redirection()
+}
+
+fn make_env(recipient_name: String, recipient_email: String) {
+    let mut env = "SENDGRID_API_KEY=\"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\"
+SENDER_NAME=\"noticheckdown\"
+SENDER_EMAIL=\"noticheckdown@gmail.com\"
+".to_string();
+
+    env.push_str(format!("RECIPIENT_NAME=\"{}\"\n", recipient_name).as_str());
+    env.push_str(format!("RECIPIENT_EMAIL=\"{}\"\n", recipient_email).as_str());
+
+    let mut data_file = File::create(".env").expect("Nothing");
+    data_file.write(env.as_bytes()).expect("Nothing");
 }
