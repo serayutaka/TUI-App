@@ -136,7 +136,7 @@ pub fn send_email(result: bool) -> Result<(), Error> {
             header::CONTENT_TYPE, 
             header::HeaderValue::from_static("application/json")
         );
-        let response = client.send()?;
+        let _ = client.send()?;
     }
     else {
         let body = json!(
@@ -171,7 +171,7 @@ pub fn send_email(result: bool) -> Result<(), Error> {
             header::CONTENT_TYPE, 
             header::HeaderValue::from_static("application/json")
         );
-        let response = client.send()?;
+        let _ = client.send()?;
     }
 
     Ok(())
