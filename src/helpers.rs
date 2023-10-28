@@ -9,6 +9,7 @@ use chrono::{prelude::*, TimeZone};
 use chrono_tz::Asia::Bangkok;
 use csv::Writer;
 
+// A funtion that will check internet connection
 pub fn is_internet_connected() -> bool {
     let client = match HttpClient::new() {
         Ok(client) => client,
@@ -17,6 +18,9 @@ pub fn is_internet_connected() -> bool {
         }
     };
 
+    /* You can replace any website here but for ensure it's
+    work probably you should choose website that reliable
+    e.g. Google, Facebook, Amazon, etc. */
     let response = match client.get("https://www.google.com") {
         Ok(response) => response,
         _ => {
@@ -53,6 +57,7 @@ pub struct User {
     email: String,
 }
 
+// A function that will send an email
 pub fn send_email(result: bool) -> Result<(), Error> {
     dotenv::dotenv().ok();
 
@@ -132,15 +137,6 @@ pub fn send_email(result: bool) -> Result<(), Error> {
             header::HeaderValue::from_static("application/json")
         );
         let response = client.send()?;
-    
-        match response.status() {
-            StatusCode::OK | StatusCode::CREATED | StatusCode::ACCEPTED => println!("Email sent!"),
-            _ => eprintln!(
-                "Unable to send your email. Status code was: {}. Body content was: {:?}",
-                response.status(),
-                response.text()
-            ),
-        }
     }
     else {
         let body = json!(
@@ -176,20 +172,12 @@ pub fn send_email(result: bool) -> Result<(), Error> {
             header::HeaderValue::from_static("application/json")
         );
         let response = client.send()?;
-    
-        match response.status() {
-            StatusCode::OK | StatusCode::CREATED | StatusCode::ACCEPTED => println!("Email sent!"),
-            _ => eprintln!(
-                "Unable to send your email. Status code was: {}. Body content was: {:?}",
-                response.status(),
-                response.text()
-            ),
-        }
     }
 
     Ok(())
 }
 
+// A function that will read .csv files
 pub fn read_csv() -> String {
     // Read data from the CSV file and format it
     let mut x_values = Vec::new();
@@ -219,6 +207,7 @@ pub fn read_csv() -> String {
     return url;
 }
 
+// A function that will check response time and collect a data
 #[tokio::main]
 pub async fn check_res(url: String, hour: String, minuite: String) -> bool {
     let interval = Duration::from_secs(1); // Set the interval in seconds (e.g., 60 seconds)
@@ -277,6 +266,7 @@ pub async fn check_res(url: String, hour: String, minuite: String) -> bool {
     return true;
 }
 
+// A function that will write a .csv file
 pub fn write_csv<W: Write>(writer: W, list_time: Vec<Time>) -> Result<(), csv::Error> {
     let mut wtr = Writer::from_writer(writer);
     for time in list_time {
