@@ -28,9 +28,10 @@ pub fn is_internet_connected() -> bool {
 }
 
 pub fn make_env(recipient_name: String, recipient_email: String) {
-    let mut env = "SENDGRID_API_KEY=\"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\"
-SENDER_NAME=\"noticheckdown\"
-SENDER_EMAIL=\"noticheckdown@gmail.com\"
+    // Add your Sendgrid's API key here
+    let mut env = "SENDGRID_API_KEY=\"\"
+SENDER_NAME=\"\"
+SENDER_EMAIL=\"\"
 ".to_string();
 
     env.push_str(format!("RECIPIENT_NAME=\"{}\"\n", recipient_name).as_str());
