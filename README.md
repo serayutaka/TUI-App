@@ -26,12 +26,11 @@
 
 </h4>
 
-<div1 align= "center">
-
+<div align=center>
+    
 ![vdo](https://media.tenor.com/g7GCc40VwecAAAAi/rafs-rafsdesign.gif)
 
 </div>
-
 <h1 align="center">NotiCheckDown</h1>
 <h3 align="center">An TUI-Application that will check the status of the website or server that you've choose and send an email when website/server down.</h3>
 
