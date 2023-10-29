@@ -62,8 +62,9 @@ Simply just type this command on your terminal
 cargo run
 ```
 
-<img src="demo/terminal.mp4" width=300></img>
-<img src="demo/result.mp4>"></img>
+![terminal](https://media4.giphy.com/media/v7WGJPvxiX6Jt4H2a3/giphy.gif)
+___
+![result](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmFpMjBtZXgwZnlrYTluZGswZ29pNHI0ZnZrdDVucTBsMnVzNzFvMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITvW1NqvbwXJllpjAD/giphy.gif)
 
 
 - Press `h`
