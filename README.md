@@ -7,20 +7,16 @@
 
 <h1 align="center">Hi 👋, There</h1>
 <h3 align="center">This is my final project for</h3>
-<h3 align="center">
 
-🦀 *_Elementary System Programming course_* 🦀
+<div align="center">
 
-</h3>
+### 🦀 *Elementary System Programming Course* 🦀</div>
 
 <h3 align="center">Software Engineering, School of Engineering</h3>
 <h3 align="center">
 
 *King Mongkut's Institute of Technology Ladkrabang* 
-
 </h3>
-
-<h1></h1>
 
 <h4 align="center">
 
@@ -61,9 +57,9 @@ Simply just type this command on your terminal
 ```
 cargo run
 ```
+![terminal](https://github.com/serayutaka/TUI-App/assets/121752252/97416298-8bb4-457b-af45-50842746d194)
 
-![terminal](https://media4.giphy.com/media/v7WGJPvxiX6Jt4H2a3/giphy.gif)
-___
+---
 ![result](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmFpMjBtZXgwZnlrYTluZGswZ29pNHI0ZnZrdDVucTBsMnVzNzFvMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ITvW1NqvbwXJllpjAD/giphy.gif)
 
 
